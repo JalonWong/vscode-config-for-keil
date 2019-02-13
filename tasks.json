@@ -13,7 +13,7 @@
             "command": "${env:KEIL5_PATH}/keil5_build.bat",
             "args": [
                 "${workspaceFolder}\\Project\\sample.uvprojx",
-                "-b"
+                "${input:buildOption}"
             ],
             "problemMatcher": {
                 "owner": "cpp",
@@ -29,29 +29,15 @@
                     "message": 4
                 }
             }
-        },
+        }
+    ],
+    "inputs": [
         {
-            "label": "rebuild",
-            "type": "shell",
-            "command": "${env:KEIL5_PATH}/keil5_build.bat",
-            "args": [
-                "${workspaceFolder}\\Project\\sample.uvprojx",
-                "-r"
-            ],
-            "problemMatcher": {
-                "owner": "cpp",
-                "fileLocation": [
-                    "relative",
-                    "${workspaceFolder}/Project"
-                ],
-                "pattern": {
-                    "regexp": "^(.*)\\((.*)\\):\\s(warning|error):.*:\\s(.*)$",
-                    "file": 1,
-                    "line": 2,
-                    "severity": 3,
-                    "message": 4
-                }
-            }
+            "type": "pickString",
+            "id": "buildOption",
+            "description": "Build or Rebuild",
+            "options": ["-b", "-r"],
+            "default": "-b"
         }
     ]
 }
