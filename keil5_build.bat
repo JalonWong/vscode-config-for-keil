@@ -5,8 +5,13 @@ set binpath=%3
 if "%binpath%"=="" (
     goto end
 ) else (
-    DEL %binpath%".bin"
-    DEL %binpath%".axf"
+    if exist %binpath%".bin" (
+        DEL %binpath%".bin"
+    )
+    
+    if exist %binpath%".axf" (
+        DEL %binpath%".axf"
+    )
 )
 :end
 
